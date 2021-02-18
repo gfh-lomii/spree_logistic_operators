@@ -1,0 +1,13 @@
+<%= render partial: 'spree/shared/error_messages', locals: { target: @logistic_operator } %>
+<div class="form-group">
+
+  <%= f.field_container :name do %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  <% end %>
+
+  <%= f.field_container :active do %>
+    <%= f.label :active %>
+    <%= f.check_box :active, class: 'form-control' %>
+  <% end %>
+</div>

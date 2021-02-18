@@ -1,0 +1,11 @@
+<% content_for :page_title do %>
+  <%= link_to plural_resource_name(Spree::LogisticOperator), spree.admin_logistic_operators_url %> /
+  <%= @logistic_operator.name %>
+<% end %>
+
+<%= form_for [:admin, @logistic_operator] do |f| %>
+  <fieldset>
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>

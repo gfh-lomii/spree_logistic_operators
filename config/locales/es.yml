@@ -1,0 +1,12 @@
+es:
+  activerecord:
+    models:
+      spree/logistic_operator:
+        one: Operador logístico
+        other: Operadores logísticos
+    attributes:
+      spree/logistic_operator:
+        name: Nombre
+        active: Activo
+  spree:
+    new_logistic_operator: Nuevo operador logístico

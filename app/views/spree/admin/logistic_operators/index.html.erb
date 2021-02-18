@@ -1,0 +1,68 @@
+<% content_for :page_title do %>
+  <%= Spree.t(plural_resource_name(Spree::LogisticOperator)) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_logistic_operator), new_object_url, { class: "btn-success", icon: 'add', id: 'admin_new_logistic_operator' } %>
+<% end if can?(:create, Spree::LogisticOperator) %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_LogisticOperators_index_search">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :name_cont, Spree.t(:name) %>
+            <%= f.text_field :name_cont, size: 15, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div data-hook="admin_logisic_operators_index_search_buttons" class="form-actions">
+        <%= button Spree.t(:filter_results), 'search' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<div data-hook='admin_logisic_operators'>
+  <%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>
+  <% if @collection.any? %>
+    <table class="table sortable" data-hook="logisic_operators_table">
+      <thead>
+        <tr data-hook="logisic_operators_header">
+          <th>
+            <%= sort_link @search, :name, I18n.t(:name, scope: 'activerecord.attributes.spree/logistic_operator') %>
+          </th>
+          <th>
+            <%= I18n.t(:active, scope: 'activerecord.attributes.spree/logistic_operator') %>
+          </th>
+          </th>
+          <th class="actions"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @collection.each do |logistic_operator| %>
+          <tr id="<%= spree_dom_id logistic_operator %>" data-hook="logisic_operators_row">
+            <td>
+              <%= logistic_operator.name %>
+            </td>
+            <td>
+              <span class="badge badge-<%= logistic_operator.active? ? 'success' : 'warning' %>">
+                <%= logistic_operator.active? ? Spree.t(:say_yes) : Spree.t(:say_no) %>
+              </span>
+            </td>
+            <td class="actions actions-2 text-right">
+              <%= link_to_edit logistic_operator, no_text: true, class: 'edit' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="alert alert-info alpha twelve columns no-objects-found">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::LogisticOperator)) %>
+    </div>
+  <% end %>
+</div>
+
+<%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>
