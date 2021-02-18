@@ -9,4 +9,5 @@ es:
         name: Nombre
         active: Activo
   spree:
+    logistic_operator: Operador logístico
     new_logistic_operator: Nuevo operador logístico
