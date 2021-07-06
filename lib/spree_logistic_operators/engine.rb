@@ -17,6 +17,10 @@ module SpreeLogisticOperators
       unless Spree::PermittedAttributes.shipment_attributes.include?(:spree_logistic_operator_id)
         Spree::PermittedAttributes.shipment_attributes << :spree_logistic_operator_id
       end
+
+      unless Spree::PermittedAttributes.shipment_attributes.include?(:journey_ids)
+        Spree::PermittedAttributes.shipment_attributes << {journey_ids: []}
+      end
     end
 
     config.to_prepare(&method(:activate).to_proc)
