@@ -18,7 +18,7 @@ module SpreeLogisticOperators
         Spree::PermittedAttributes.shipment_attributes << :spree_logistic_operator_id
       end
 
-      unless Spree::PermittedAttributes.shipment_attributes.include?(:journey_ids)
+      unless Spree::PermittedAttributes.shipment_attributes.include?(:journeys_attributes)
         Spree::PermittedAttributes.shipment_attributes << { journeys_attributes: %i[id estimation_product_id estimation_journey_start_at journey_id journey_start_at journey_end_at journey_state canceled] }
       end
     end
