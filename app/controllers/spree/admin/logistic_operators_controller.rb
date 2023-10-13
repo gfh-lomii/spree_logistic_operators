@@ -2,6 +2,11 @@ module Spree
   module Admin
     class LogisticOperatorsController < ResourceController
 
+      def index
+        session[:return_to] = request.url
+        respond_with(@collection)
+      end
+
       private
 
       def find_resource

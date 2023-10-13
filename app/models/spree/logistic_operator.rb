@@ -7,7 +7,8 @@ module Spree
     scope :actives, -> { where(active: true) }
     scope :inactives, -> { where(active: false) }
 
-    CABIFY_API_URL = 'https://cabify-sandbox.com/api/v3/graphql'
+    #CABIFY_API_URL = 'https://cabify-sandbox.com/api/v3/graphql'
+    CABIFY_API_URL = 'https://cabify.com/api/v3/graphql'
 
     def cabify?
       name.downcase.eql? 'cabify'
